@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Khem Raj Pandey | CA CIA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khem Raj Pandey | CA CIA</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
 
-    body {
-      line-height: 1.6;
-      background: #f5f7fa;
-      color: #333;
-    }
+body {
+  background: #f5f7fa;
+  color: #333;
+}
 
-    /* NAVBAR */
-    .navbar {
-      position: sticky;
-      top: 0;
-      background: #0f2f44;
-      color: white;
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      z-index: 1000;
-    }
+/* NAVBAR */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: #0f2f44;
+  color: white;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
+}
 
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-    }
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
 
-    /* HERO SECTION - PREMIUM COMPACT VERSION */
+/* HERO (ELITE ANIMATED) */
 .hero {
   min-height: 50vh;
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-size: 200% 200%;
+  animation: gradientMove 10s ease infinite;
+
   color: white;
   display: flex;
   align-items: center;
@@ -50,169 +51,214 @@
   padding: 30px 20px 10px;
 }
 
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* HERO TEXT */
 .hero h1 {
   font-size: 40px;
   margin-bottom: 10px;
-  font-weight: 600;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
 }
 
 .hero p {
   font-size: 16px;
-  opacity: 0.9;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.3s;
 }
 
-    /* SECTION */
-    .section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    .section h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #0f2f44;
-    }
+/* SECTION */
+.section {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
 
-    .section p {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+.section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0f2f44;
+}
 
-    /* SERVICES GRID (UNCHANGED STYLE) */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
+.section p {
+  text-align: center;
+  margin-bottom: 40px;
+}
 
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: 0.3s;
-    }
+/* SERVICES GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
 
-    /* FOOTER */
-    .footer {
-      background: #0f2f44;
-      color: white;
-      text-align: center;
-      padding: 30px 20px;
-    }
+.card:hover {
+  transform: translateY(-5px);
+}
 
-    .footer a {
-      color: #00c6ff;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: 500;
-    }
+/* SCROLL ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
 
-    /* FLOATING WHATSAPP */
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: white;
-      padding: 12px 16px;
-      border-radius: 50px;
-      font-size: 14px;
-      text-decoration: none;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  </style>
+/* FOOTER */
+.footer {
+  background: #0f2f44;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.footer a {
+  color: #00c6ff;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 50px;
+  text-decoration: none;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <div class="navbar">
-    <div><strong>Khem Raj Pandey</strong></div>
-    <div>
-      <a href="#services">Services</a>
-      <a href="#profile">Profile</a>
-      <a href="#contact">Contact</a>
+<!-- NAVBAR -->
+<div class="navbar">
+  <div><strong>Khem Raj Pandey</strong></div>
+  <div>
+    <a href="#services">Services</a>
+    <a href="#profile">Profile</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>CA Khem Raj Pandey</h1>
+    <p>Internal Audit | Risk Advisory | Governance & Compliance</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section reveal">
+  <h2>Services</h2>
+  <p>Helping organizations strengthen governance, controls, and efficiency.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Internal Audit</h3>
+      <p>Risk-based audits across financial, operational, and compliance areas.</p>
+    </div>
+
+    <div class="card">
+      <h3>Risk Management</h3>
+      <p>Enterprise risk frameworks and governance advisory.</p>
+    </div>
+
+    <div class="card">
+      <h3>Fraud Investigation</h3>
+      <p>Fraud detection, investigation, and prevention strategies.</p>
+    </div>
+
+    <div class="card">
+      <h3>AML / KYC Compliance</h3>
+      <p>Regulatory compliance and AML/KYC reviews.</p>
+    </div>
+
+    <div class="card">
+      <h3>SAP Controls</h3>
+      <p>SAP S/4HANA implementation and control design.</p>
+    </div>
+
+    <div class="card">
+      <h3>Process Optimization</h3>
+      <p>Improving efficiency and reducing operational risk.</p>
     </div>
   </div>
+</section>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div>
-      <h1>CA Khem Raj Pandey</h1>
-      <p>Internal Audit | Risk Advisory | Governance & Compliance</p>
-    </div>
-  </section>
+<!-- PROFILE -->
+<section id="profile" class="section reveal">
+  <h2>Profile</h2>
+  <p>
+    Chartered Accountant (CA) and Certified Internal Auditor (CIA) with expertise in internal audit, compliance, and risk-based assurance, including enterprise risk management, AML/KYC, fraud investigation, and corporate governance. Experienced in SAP implementation and control frameworks, board and audit committee reporting, control strengthening, and process re-engineering to enhance operational efficiency and risk resilience, with cross-border experience across India and Nepal.
+  </p>
+</section>
 
-  <!-- SERVICES -->
-  <section id="services" class="section">
-    <h2>Services</h2>
-    <p>Helping organizations strengthen governance, controls, and efficiency.</p>
+<!-- FOOTER -->
+<footer id="contact" class="footer">
+  <h3>Contact</h3>
+  <p>
+    📧 <a href="mailto:krpandey09@gmail.com">Email</a> |
+    💼 <a href="https://www.linkedin.com/in/ca-khem-raj-pandey/" target="_blank">LinkedIn</a> |
+    📱 <a href="https://wa.me/9779702037030" target="_blank">WhatsApp</a>
+  </p>
+  <p>© 2026 Khem Raj Pandey</p>
+</footer>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Internal Audit</h3>
-        <p>Risk-based audits across financial, operational, and compliance areas.</p>
-      </div>
+<!-- FLOATING WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/9779702037030" target="_blank">
+  WhatsApp
+</a>
 
-      <div class="card">
-        <h3>Risk Management</h3>
-        <p>Enterprise risk frameworks and governance advisory.</p>
-      </div>
+<!-- SCROLL SCRIPT -->
+<script>
+function revealOnScroll() {
+  const elements = document.querySelectorAll('.reveal');
 
-      <div class="card">
-        <h3>Fraud Investigation</h3>
-        <p>Fraud detection, investigation, and prevention strategies.</p>
-      </div>
+  elements.forEach(el => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
 
-      <div class="card">
-        <h3>AML / KYC Compliance</h3>
-        <p>Regulatory compliance and AML/KYC reviews.</p>
-      </div>
+    if (elementTop < windowHeight - 100) {
+      el.classList.add('active');
+    }
+  });
+}
 
-      <div class="card">
-        <h3>SAP Controls</h3>
-        <p>SAP S/4HANA implementation and control design.</p>
-      </div>
-
-      <div class="card">
-        <h3>Process Optimization</h3>
-        <p>Improving efficiency and reducing operational risk.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROFILE -->
-  <section id="profile" class="section">
-    <h2>Profile</h2>
-    <p>
-      Chartered Accountant (CA) and Certified Internal Auditor (CIA) with expertise in internal audit, compliance, and risk-based assurance, including enterprise risk management, AML/KYC, fraud investigation, and corporate governance. Experienced in SAP implementation and control frameworks, board and audit committee reporting, control strengthening, and process re-engineering to enhance operational efficiency and risk resilience, with cross-border experience across India and Nepal.
-    </p>
-  </section>
-
-  <!-- FOOTER (CONTACT HERE AS REQUESTED) -->
-  <footer id="contact" class="footer">
-    <h3>Contact</h3>
-    <p>
-      📧 <a href="mailto:krpandey09@gmail.com">krpandey09@gmail.com</a> |
-      💼 <a href="https://www.linkedin.com/in/ca-khem-raj-pandey/" target="_blank">LinkedIn</a> |
-      📱 <a href="https://wa.me/9779702037030" target="_blank">WhatsApp</a>
-    </p>
-    <p style="margin-top:10px;">© 2026 Khem Raj Pandey</p>
-  </footer>
-
-  <!-- FLOATING WHATSAPP -->
-  <a class="whatsapp" href="https://wa.me/9779702037030" target="_blank">
-    Chat on WhatsApp
-  </a>
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
 
 </body>
 </html>
